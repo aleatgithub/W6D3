@@ -5,7 +5,7 @@ class UsersController < ApplicationController
   end
 
   def create
-    user = User.new(params.require(:user).permit(:name, :email))
+    user = User.new(params.require(:user).permit(:username))
     if user.save
       render json: user
     else
@@ -36,7 +36,7 @@ class UsersController < ApplicationController
     user = User.find(params[:id])
 
     if user.delete 
-      render plain: 'User deleted.'
+      render json: user
     else 
       render json: user.errors.full_messages, status: :forbidden
     end
@@ -45,7 +45,7 @@ class UsersController < ApplicationController
 
    private 
   def user_params
-    params.require(:user).permit(:name, :email)
+    params.require(:user).permit(:username)
   end
 
 end
