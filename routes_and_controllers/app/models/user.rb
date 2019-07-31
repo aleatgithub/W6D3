@@ -16,7 +16,7 @@ class User < ApplicationRecord
     class_name: "Artwork",
     dependent: :destroy
   
-  has_many :shared_artworks, #come back here?
+  has_many :shared_artworks,
     foreign_key: :viewer_id, 
     class_name: "ArtworkShare"
 
